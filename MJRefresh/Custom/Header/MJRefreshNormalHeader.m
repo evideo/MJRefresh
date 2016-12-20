@@ -101,25 +101,25 @@
                 // 如果执行完动画发现不是idle状态，就直接返回，进入其他状态
                 if (self.state != MJRefreshStateIdle) return;
                 
-                self.loadingView.alpha = 1.0;
+                self.loadingView.alpha = 0.0;
                 [self.loadingView stopAnimating];
-                self.arrowView.hidden = NO;
+                self.arrowView.hidden = YES;
             }];
         } else {
             [self.loadingView stopAnimating];
-            self.arrowView.hidden = NO;
+            self.arrowView.hidden = YES;
             [UIView animateWithDuration:MJRefreshFastAnimationDuration animations:^{
                 self.arrowView.transform = CGAffineTransformIdentity;
             }];
         }
     } else if (state == MJRefreshStatePulling) {
         [self.loadingView stopAnimating];
-        self.arrowView.hidden = NO;
+        self.arrowView.hidden = YES;
         [UIView animateWithDuration:MJRefreshFastAnimationDuration animations:^{
             self.arrowView.transform = CGAffineTransformMakeRotation(0.000001 - M_PI);
         }];
     } else if (state == MJRefreshStateRefreshing) {
-        self.loadingView.alpha = 1.0; // 防止refreshing -> idle的动画完毕动作没有被执行
+        self.loadingView.alpha = 0.0; // 防止refreshing -> idle的动画完毕动作没有被执行
         [self.loadingView startAnimating];
         self.arrowView.hidden = YES;
     }

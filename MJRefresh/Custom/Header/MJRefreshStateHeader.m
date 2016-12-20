@@ -102,6 +102,7 @@
                                           [NSBundle mj_localizedStringForKey:MJRefreshHeaderLastTimeText],
                                           isToday ? [NSBundle mj_localizedStringForKey:MJRefreshHeaderDateTodayText] : @"",
                                           time];
+        [self.lastUpdatedTimeLabel setHidden:YES];
     } else {
         self.lastUpdatedTimeLabel.text = [NSString stringWithFormat:@"%@%@",
                                           [NSBundle mj_localizedStringForKey:MJRefreshHeaderLastTimeText],
